@@ -1,69 +1,186 @@
-/* HUD */
+/* Game Styles */
+:root {
+    --primary-color: #56a5eb;
+    --secondary-color: #2c7be5;
+    --correct-color: #28a745;
+    --incorrect-color: #dc3545;
+    --text-color: #333;
+    --light-color: #f8f9fa;
+    --shadow: 0 4px 15px rgba(86, 165, 235, 0.3);
+    --transition: all 0.3s ease;
+}
+
+/* HUD Styles */
 #hud {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.hud-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.hud-item:hover {
+    transform: translateY(-3px);
 }
 
 .hud-prefix {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
 }
 
 .hud-main-text {
     text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
 }
 
 /* Progress Bar */
 #progress-bar {
-    padding: 0;
-    width: 20rem;
-    height: 4rem;
-    border: 0.3rem solid #56a5eb;
-    margin-top: 1.25rem;
-    border-radius: 2rem;
+    width: 150px;
+    height: 10px;
+    border: none;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    background-color: #e9ecef;
+    overflow: hidden;
 }
 
 #progress-bar-full {
-    height: 3.4rem;
-    background-color: #56a5eb;
-    width: 100%;
-    border-radius: 2rem;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    width: 0%;
+    border-radius: 5px;
+    transition: width 0.5s ease;
 }
 
+/* Question Styles */
+#question {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    line-height: 1.4;
+    color: var(--text-color);
+    font-weight: 600;
+    animation: fadeIn 0.5s ease-out;
+}
 
-
-/* CONTAINERS */
+/* Choice Container */
 .choice-container {
     display: flex;
-    margin-bottom: 0.5rem;
+    align-items: center;
+    margin-bottom: 1rem;
     width: 100%;
-    font-size: 1.8rem;
-    border: 0.1rem solid rgba(86, 165, 235, 0.25);
-    background-color: whitesmoke;
+    font-size: 1.2rem;
+    border: none;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .choice-container:hover {
-    cursor: grab;
-    box-shadow: 0 0.4 1.4 0 rgba(86, 185, 235, 0.5) ;
-    transform: translateY(-0.1rem);
-    transition: transform 150ms;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
 }
 
 .choice-prefix {
-    padding: 1.5rem 2.5rem;
-    background-color: #56a5eb;
-    color: whitesmoke;
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-weight: 600;
+    min-width: 50px;
+    text-align: center;
 }
 
 .choice-text {
-    padding: 1.5rem;
+    padding: 1.2rem 1.5rem;
     width: 100%;
+    font-weight: 500;
 }
 
+/* Answer Feedback */
 .correct {
-    background-color: #28a745;
+    background-color: var(--correct-color);
+    color: white;
+}
+
+.correct .choice-prefix {
+    background-color: darken(var(--correct-color), 10%);
 }
 
 .incorrect {
-    background-color: #dc3545;
+    background-color: var(--incorrect-color);
+    color: white;
+}
+
+.incorrect .choice-prefix {
+    background-color: darken(var(--incorrect-color), 10%);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #hud {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+    
+    .hud-item {
+        width: 100%;
+    }
+    
+    #question {
+        font-size: 1.6rem;
+    }
+    
+    .choice-container {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #question {
+        font-size: 1.4rem;
+    }
+    
+    .choice-prefix {
+        padding: 1rem;
+        min-width: 40px;
+    }
+    
+    .choice-text {
+        padding: 1rem;
+    }
 }

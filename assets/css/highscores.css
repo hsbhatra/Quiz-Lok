@@ -1,15 +1,116 @@
+/* High Scores Styles */
+#high-scores {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+#final-score {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 #high-score-list {
     list-style: none;
-    padding-left: 0;
-    margin: 4rem;
-    font-size: 2rem;
+    padding: 0;
+    margin: 2rem 0;
+    width: 100%;
 }
 
-p .high-score {
-    margin-bottom: 0.5rem;
+.high-score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    font-size: 1.2rem;
 }
 
-p .high-score:hover {
-    transform: scale(1.025);
-    cursor: default;
+.high-score:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.high-score .name {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.high-score .score {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+/* Game Over Form */
+form {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+input {
+    width: 100%;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid #e9ecef;
+    border-radius: 50px;
+    font-size: 1rem;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #final-score {
+        font-size: 2.5rem;
+    }
+    
+    .high-score {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .high-score .score {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #final-score {
+        font-size: 2rem;
+    }
+    
+    .high-score {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
 }
