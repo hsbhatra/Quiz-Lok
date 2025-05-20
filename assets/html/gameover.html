@@ -10,8 +10,18 @@
     <div class="container">
         <div id="end" class="flex-center flex-column">
             <h1 id="final-score">0</h1>
-            <form>
-                <input type="text" name="username" id="username" placeholder="username">
+            <form style="
+            display: flex; 
+            flex-direction: column;
+            justify-content:center;
+            align-items: center;
+            ">
+                <input type="text" name="username" id="username" placeholder="Enter your username" style="
+                    border: 2px solid black;
+                    padding: 5px 10px;
+                    margin: 10px auto;
+                    text-align: center;
+                ">
                 <button type="submit" class="btn" id="save-score-btn" onclick="saveHighScore(event)" disabled>Save</button>
             </form>
             <a href="../html/game.html" class="btn">Play Again</a>
